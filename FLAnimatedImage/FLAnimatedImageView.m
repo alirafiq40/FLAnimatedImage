@@ -87,6 +87,12 @@
 - (void)commonInit
 {
     self.runLoopMode = [[self class] defaultRunLoopMode];
+    
+#ifdef __IPHONE_11_0
+    if (@available(iOS 11.0, *)) {
+        self.accessibilityIgnoresInvertColors = YES;
+    }
+#endif
 }
 
 
@@ -210,11 +216,6 @@
 }
 
 #pragma mark Smart Invert Colors
-
-- (BOOL)accessibilityIgnoresInvertColors
-{
-    return YES;
-}
 
 #pragma mark - UIImageView Method Overrides
 #pragma mark Image Data
